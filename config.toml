@@ -1,0 +1,33 @@
+# NeuroFlow Dashboard - Futuristic Dark Theme Configuration
+# Place this file in: .streamlit/config.toml
+
+[theme]
+# Base theme
+base = "dark"
+
+# Primary color - Neural Blue (for buttons, links, and accents)
+primaryColor = "#00C1FF"
+
+# Background color - Charcoal Black
+backgroundColor = "#0a0a0a"
+
+# Secondary background color (for sidebar and containers)
+secondaryBackgroundColor = "#1a1a1a"
+
+# Text color
+textColor = "#FAFAFA"
+
+# Font
+font = "sans serif"
+
+[server]
+# Enable CORS for production deployment
+enableCORS = false
+enableXsrfProtection = true
+
+# Port configuration (optional, for local testing)
+port = 8501
+
+[browser]
+# Automatically open browser on start
+gatherUsageStats = false
