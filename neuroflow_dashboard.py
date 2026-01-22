@@ -1528,7 +1528,6 @@ elif page == "🔬 The ML Laboratory":
             'Confidence': '{:.4f}',
             'Lift': '{:.4f}',
             'Price': '${:.2f}'
-        }).background_gradient(subset=['Lift'], cmap='YlGn')
         
         st.dataframe(styled_task_d, use_container_width=True, height=400)
         
