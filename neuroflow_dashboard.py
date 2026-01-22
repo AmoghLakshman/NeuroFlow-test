@@ -617,7 +617,7 @@ if page == "🏠 Executive Summary":
         with col2:
             st.markdown("""
             <div style='background: linear-gradient(135deg, #00C853 0%, #00E676 100%); padding: 25px; 
-                 border-radius: 15px; color: white; text-align: center; height: 250px;
+                 border-radius: 15px; color: white; text-align: center; height: auto;
                  box-shadow: 0 8px 16px rgba(0,0,0,0.1);'>
                 <h3 style='margin-top: 20px;'>Why They're Perfect</h3>
                 <ul style='text-align: left; line-height: 2; margin-top: 20px;'>
@@ -633,7 +633,7 @@ if page == "🏠 Executive Summary":
         with col3:
             st.markdown("""
             <div style='background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 100%); padding: 25px; 
-                 border-radius: 15px; color: white; text-align: center; height: 250px;
+                 border-radius: 15px; color: white; text-align: center; height: auto;
                  box-shadow: 0 8px 16px rgba(0,0,0,0.1);'>
                 <h3 style='margin-top: 20px;'>Go-to-Market Strategy</h3>
                 <ul style='text-align: left; line-height: 2; margin-top: 20px;'>
