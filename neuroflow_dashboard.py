@@ -405,9 +405,10 @@ st.sidebar.markdown("""
 
 ### 👥 Team
 - Amogh Lakshman
-- [Team Member 2]
-- [Team Member 3]
-- [Team Member 4]
+- Mirudubashini KC
+- Mohammed Zaid Mansuri
+- Nikita Agarwal
+- Lavisha Pradhwani
 
 ### 🎯 Assignment Coverage
 ✅ Classification Models  
