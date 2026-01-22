@@ -817,7 +817,7 @@ elif page == "📊 Market Intelligence (EDA)":
             points='all'
         )
         fig.update_layout(height=400, showlegend=False)
-        fig.update_xaxis(tickangle=45)
+        fig.update_xaxes(tickangle=45)  #
         st.plotly_chart(fig, use_container_width=True)
         
         price_stats = df.groupby('Occupation')['Willing_To_Pay'].agg(['mean', 'median', 'std']).round(2)
