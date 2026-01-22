@@ -366,7 +366,7 @@ with st.spinner("🧠 Training all ML models for simulation hub..."):
 st.sidebar.markdown("""
 <div style='text-align: center; padding: 30px 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
      border-radius: 15px; margin-bottom: 20px;'>
-    <h1 style='color: white; margin: 0; font-size: 2.5em;'>🔮</h1>
+    <h1 style='color: white !important; -webkit-text-fill-color: white !important; background: none !important; margin: 0; font-size: 2.5em;'>🔮</h1>
     <h2 style='color: white; margin: 10px 0;'>NeuroFlow</h2>
     <p style='color: rgba(255,255,255,0.9); margin: 0; font-size: 0.9em;'>AI-Powered Focus Intelligence</p>
 </div>
