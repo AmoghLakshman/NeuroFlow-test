@@ -602,7 +602,7 @@ if page == "🏠 Executive Summary":
         with col1:
             st.markdown("""
             <div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; 
-                 border-radius: 15px; color: white; text-align: center; height: 250px;
+                 border-radius: 15px; color: white; text-align: center; height: auto;
                  box-shadow: 0 8px 16px rgba(0,0,0,0.1);'>
                 <h2 style='margin: 0; font-size: 3em;'>🎯</h2>
                 <h3 style='margin: 15px 0;'>Cluster 0</h3>
