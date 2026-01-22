@@ -1527,7 +1527,7 @@ elif page == "🔬 The ML Laboratory":
         styled_task_d = df_task_d[['Rule_ID', 'Bundle_Name', 'Features', 'Confidence', 'Lift', 'Price']].style.format({
             'Confidence': '{:.4f}',
             'Lift': '{:.4f}',
-            'Price': '${:.2f}' }
+            'Price': '${:.2f}' } )
         
         st.dataframe(styled_task_d, use_container_width=True, height=400)
         
