@@ -1,7 +1,9 @@
 """
 NeuroFlow Dashboard - FIXED VERSION
 ====================================
-All errors corrected, including the Market Intelligence page fix.
+1. Fixed GitHub Raw URL (Removed 'refs/heads')
+2. Sanitized all indentation (Removed non-breaking spaces)
+3. Validated update_xaxes syntax
 """
 
 import os
@@ -28,10 +30,11 @@ gatherUsageStats = false
 
 def create_dashboard_script():
     """Creates the FIXED dashboard script"""
+    # Note: The triple quotes below start the content of the dashboard file
     script_content = '''"""
 NeuroFlow Dashboard - FIXED ULTIMATE EDITION
 =============================================
-All errors corrected including AttributeError fixes
+All errors corrected including AttributeError fixes and Data URL
 """
 
 import streamlit as st
@@ -49,6 +52,7 @@ from sklearn.cluster import KMeans
 import warnings
 from datetime import datetime
 
+# 1. Page Configuration (Must be first)
 st.set_page_config(
     page_title="NeuroFlow | AI Simulation Hub",
     page_icon="🎮",
@@ -68,6 +72,7 @@ COLORS = {
     'teal': '#00897B',
 }
 
+# 2. Custom CSS
 st.markdown("""
 <style>
     .main {
@@ -91,7 +96,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-DATA_URL = "https://raw.githubusercontent.com/AmoghLakshman/NeuroFlow/refs/heads/main/neuroflow_market_survey.csv"
+# 3. FIXED DATA URL
+DATA_URL = "https://raw.githubusercontent.com/AmoghLakshman/NeuroFlow/main/neuroflow_market_survey.csv"
 
 @st.cache_data(show_spinner=False)
 def load_data():
@@ -105,10 +111,10 @@ with st.spinner("🔄 Loading data..."):
     df, error = load_data()
 
 if df is None:
-    st.error(f"❌ Error: {error}")
+    st.error(f"❌ Error loading data: {error}")
     st.stop()
 
-# Hardcoded results
+# --- Hardcoded Results for Tasks A, B, C, D ---
 task_a_results = {
     'Model': ['Logistic Regression', 'SVM', 'Random Forest', 'Decision Tree', 'XGBoost', 'KNN'],
     'Accuracy': [0.8083, 0.8083, 0.7917, 0.7750, 0.7500, 0.7500],
@@ -150,6 +156,7 @@ task_d_rules = {
 }
 df_task_d = pd.DataFrame(task_d_rules)
 
+# --- Training Pipeline ---
 @st.cache_resource
 def train_all_models(df):
     models = {}
@@ -208,6 +215,7 @@ def train_all_models(df):
 with st.spinner("🧠 Training models..."):
     trained_models = train_all_models(df)
 
+# --- Sidebar Navigation ---
 st.sidebar.markdown("""
 <div style='text-align: center; padding: 30px 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
      border-radius: 15px; margin-bottom: 20px;'>
@@ -241,7 +249,7 @@ st.sidebar.success("✨ All operational")
 if page == "🏠 Executive Summary":
     st.markdown("""
     <div style='text-align: center; padding: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-         border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);'>
+          border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);'>
         <h1 style='color: white; font-size: 3.5em; margin: 0;'>🚀 NeuroFlow</h1>
         <h3 style='color: white; margin: 15px 0;'>AI-Powered Focus Intelligence</h3>
         <p style='color: rgba(255,255,255,0.9); font-size: 1.1em;'>Executive Dashboard</p>
@@ -293,7 +301,7 @@ if page == "🏠 Executive Summary":
         st.dataframe(df, use_container_width=True, height=400)
 
 # ============================================================================
-# PAGE 2: MARKET INTELLIGENCE - FIXED!
+# PAGE 2: MARKET INTELLIGENCE
 # ============================================================================
 elif page == "📊 Market Intelligence":
     st.title("📊 Market Intelligence Dashboard")
@@ -327,7 +335,7 @@ elif page == "📊 Market Intelligence":
             title='Interest by Occupation',
             color_discrete_map={'Yes': COLORS['secondary'], 'No': '#CCCCCC'}
         )
-        # FIXED: Changed update_xaxis to update_xaxes
+        # FIXED: Using update_xaxes
         fig.update_xaxes(tickangle=-45)
         fig.update_layout(height=350)
         st.plotly_chart(fig, use_container_width=True)
@@ -359,7 +367,6 @@ elif page == "📊 Market Intelligence":
             title='Price Sensitivity by Occupation',
             points='all'
         )
-        # FIXED: Using update_xaxes instead of update_xaxis
         fig.update_xaxes(tickangle=-45)
         fig.update_layout(height=400, showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
@@ -519,7 +526,6 @@ elif page == "🧬 Customer DNA":
             text='WTP'
         )
         fig.update_traces(texttemplate='$%{text:.2f}', textposition='outside')
-        # FIXED: Using update_xaxes
         fig.update_xaxes(tickangle=-45)
         fig.update_layout(height=400, showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
@@ -534,7 +540,6 @@ elif page == "🧬 Customer DNA":
             text='Pain_Severity'
         )
         fig.update_traces(texttemplate='%{text:.2f}', textposition='outside')
-        # FIXED: Using update_xaxes
         fig.update_xaxes(tickangle=-45)
         fig.update_layout(height=400, showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
@@ -590,7 +595,6 @@ elif page == "🔬 ML Laboratory":
             barmode='group',
             title='Model Comparison'
         )
-        # FIXED: Using update_xaxes
         fig.update_xaxes(tickangle=-45)
         st.plotly_chart(fig, use_container_width=True)
     
@@ -623,7 +627,7 @@ elif page == "🔬 ML Laboratory":
 elif page == "🎮 AI Simulation Hub ⭐":
     st.markdown("""
     <div style='text-align: center; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-         border-radius: 20px; margin-bottom: 30px;'>
+          border-radius: 20px; margin-bottom: 30px;'>
         <h1 style='color: white; font-size: 3em; margin: 0;'>🎮 AI Simulation Hub</h1>
         <p style='color: white; font-size: 1.2em; margin: 15px 0;'>Interactive ML Predictions</p>
     </div>
@@ -723,7 +727,7 @@ elif page == "🎮 AI Simulation Hub ⭐":
                     'Attribute': ['Age', 'Pain', 'Tech', 'WTP'],
                     'Your Input': [cl_age, cl_sev, cl_tech, f'${cl_wtp}'],
                     'Cluster Avg': [f"{persona['Age']:.1f}", f"{persona['Pain_Severity']:.2f}", 
-                                   f"{persona['Tech_Comfort']:.2f}", f"${persona['WTP']:.2f}"]
+                                    f"{persona['Tech_Comfort']:.2f}", f"${persona['WTP']:.2f}"]
                 })
                 st.dataframe(comparison, use_container_width=True, hide_index=True)
     
@@ -793,7 +797,7 @@ elif page == "🎮 AI Simulation Hub ⭐":
                     rank = ["🥇", "🥈", "🥉"][min(idx, 2)]
                     st.markdown(f"""
                     <div style='background: white; padding: 15px; border-radius: 10px; margin: 10px 0; 
-                         border-left: 4px solid {COLORS['primary']};'>
+                           border-left: 4px solid {COLORS['primary']};'>
                         <h4>{rank} {bundle['Bundle_Name']}</h4>
                         <p>💰 ${bundle['Price']:.2f}/mo | ⚡ {bundle['Lift']:.2f}x lift</p>
                     </div>
@@ -825,7 +829,7 @@ elif page == "📈 Batch Predictions":
             with st.spinner("Processing..."):
                 batch_df['Probability'] = trained_models['classification'].predict_proba(
                     batch_df[['Age', 'Occupation', 'Primary_Challenge', 'Primary_Challenge_Severity', 
-                             'Tech_Comfort_Level', 'Willing_To_Pay']]
+                              'Tech_Comfort_Level', 'Willing_To_Pay']]
                 )[:, 1]
                 
                 batch_df['Priority'] = batch_df['Probability'].apply(
@@ -903,12 +907,6 @@ def main():
     print("=" * 70)
     print("✅ SUCCESS! All errors fixed!")
     print("=" * 70)
-    print()
-    print("🔧 FIXES APPLIED:")
-    print("   ✓ Changed update_xaxis → update_xaxes (Market Intelligence)")
-    print("   ✓ Fixed all tickangle issues")
-    print("   ✓ Verified all Plotly methods")
-    print("   ✓ Tested all visualizations")
     print()
     print("🚀 RUN:")
     print("   cd NeuroFlow_FIXED")
