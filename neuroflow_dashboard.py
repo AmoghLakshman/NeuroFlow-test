@@ -430,7 +430,7 @@ if page == "🏠 Executive Summary":
     st.markdown("""
     <div style='text-align: center; padding: 50px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
          border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);'>
-        <h1 style='color: white; font-size: 3.5em; margin: 0; font-weight: 800;'>🚀 NeuroFlow</h1>
+        <h1 style='color: white !important; -webkit-text-fill-color: white !important; background: none !important; font-size: 3.5em; margin: 0; font-weight: 800;'>🚀 NeuroFlow</h1>
         <h3 style='color: rgba(255,255,255,0.95); margin: 15px 0; font-weight: 400;'>
             Data-Driven Intelligence for AI-Powered Focus Management
         </h3>
